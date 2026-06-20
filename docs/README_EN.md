@@ -98,6 +98,9 @@ cd commands
 
 Prerequisites: [uv](https://docs.astral.sh/uv/) and the corresponding CLIs (Codex CLI, Antigravity `agy` CLI) installed.
 
+<details>
+<summary><b>Linux / macOS / Windows (CMD)</b></summary>
+
 ```bash
 # Codex MCP (backend/logic) — fork source
 claude mcp add codex -s user --transport stdio -- uvx --from git+https://github.com/TuWeiZhi/codexmcp.git codexmcp
@@ -109,11 +112,25 @@ claude mcp add agy -s user --transport stdio -- uvx --from git+https://github.co
 claude mcp list
 ```
 
-> **⚠️ Windows users**: `claude mcp add ... -- uvx --from ...` fails in **PowerShell** with `error: unknown option '--from'` — a known PowerShell `--`-argument-parsing bug ([claude-code#3825](https://github.com/anthropics/claude-code/issues/3825)), not a bad command. **Simplest fix: run the exact same command in CMD (cmd.exe)** (CMD parses `--` correctly and keeps the `-s user` scope). If you must stay in PowerShell, use `add-json` (single-quoted JSON, inner double-quotes preserved):
-> ```powershell
-> claude mcp add-json codex -s user '{"type":"stdio","command":"uvx","args":["--from","git+https://github.com/TuWeiZhi/codexmcp.git","codexmcp"]}'
-> claude mcp add-json agy   -s user '{"type":"stdio","command":"uvx","args":["--from","git+https://github.com/TuWeiZhi/agy-mcp.git","agymcp"]}'
-> ```
+</details>
+
+<details>
+<summary><b>Windows (PowerShell)</b></summary>
+
+> PowerShell has a bug parsing arguments after `--`, so the `claude mcp add ... -- uvx --from ...` form above fails with `error: unknown option '--from'` ([claude-code#3825](https://github.com/anthropics/claude-code/issues/3825)). **Simplest fix: run the same command above in CMD (cmd.exe)**; if you must stay in PowerShell, use `add-json` (single-quoted JSON, inner double-quotes preserved):
+
+```powershell
+# Codex MCP
+claude mcp add-json codex -s user '{"type":"stdio","command":"uvx","args":["--from","git+https://github.com/TuWeiZhi/codexmcp.git","codexmcp"]}'
+
+# Agy MCP
+claude mcp add-json agy -s user '{"type":"stdio","command":"uvx","args":["--from","git+https://github.com/TuWeiZhi/agy-mcp.git","agymcp"]}'
+
+# Verify
+claude mcp list
+```
+
+</details>
 
 > - OpenSpec CLI need not be installed manually — `/gudaspec:init` installs it automatically.
 > - To use the PyPI package instead of the agy fork: `uv tool install agy-mcp`, then `claude mcp add agy -s user --transport stdio -- agymcp` (upstream [Boulea7/agy-mcp](https://github.com/Boulea7/agy-mcp)).
