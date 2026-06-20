@@ -39,7 +39,7 @@ tags: [openspec, init, setup, mcp]
    - Check if `mcp__agy__agy` tool is available and responsive.
    - For each unavailable tool, display a clear warning message with installation instructions:
      - **Codex MCP**: "The `mcp__codex__codex` tool is not available. Install it from the fork: `claude mcp add codex -s user --transport stdio -- uvx --from git+https://github.com/TuWeiZhi/codexmcp.git codexmcp` (project: https://github.com/TuWeiZhi/codexmcp)"
-     - **Agy MCP**: "The `mcp__agy__agy` tool is not available. Install agy-mcp, which wraps the Antigravity `agy` CLI and supersedes the deprecated Gemini CLI wrapper: `uv tool install agy-mcp`, then `claude mcp add agy -s user --transport stdio -- agymcp`. Verify with `agy-doctor`. (project: https://github.com/Boulea7/agy-mcp)"
+     - **Agy MCP**: "The `mcp__agy__agy` tool is not available. Install agy-mcp (fork of Boulea7/agy-mcp), which wraps the Antigravity `agy` CLI and supersedes the deprecated Gemini CLI wrapper: `claude mcp add agy -s user --transport stdio -- uvx --from git+https://github.com/TuWeiZhi/agy-mcp.git agymcp`. Verify with `agy-doctor`. (project: https://github.com/TuWeiZhi/agy-mcp)"
    - Explain that these MCP tools will be required for subsequent GudaSpec workflows.
 
 5. **Summary Report**
@@ -53,7 +53,7 @@ tags: [openspec, init, setup, mcp]
 **Reference**
 - OpenSpec CLI documentation: Run `openspec --help` for available commands.
 - Codex MCP installation (fork): `claude mcp add codex -s user --transport stdio -- uvx --from git+https://github.com/TuWeiZhi/codexmcp.git codexmcp` — https://github.com/TuWeiZhi/codexmcp
-- Agy MCP installation: `uv tool install agy-mcp`, then `claude mcp add agy -s user --transport stdio -- agymcp` — https://github.com/Boulea7/agy-mcp (replaces the deprecated Gemini CLI wrapper)
+- Agy MCP installation (fork): `claude mcp add agy -s user --transport stdio -- uvx --from git+https://github.com/TuWeiZhi/agy-mcp.git agymcp` — https://github.com/TuWeiZhi/agy-mcp (replaces the deprecated Gemini CLI wrapper)
 - For Node.js/npm issues, ensure Node.js >= 18.x is installed.
 - On permission errors during global npm install, consider using `sudo` (Linux/macOS) or running terminal as Administrator (Windows), or configure npm to use a user-writable directory.
 <!-- GUDASPEC:END -->
