@@ -92,6 +92,27 @@ cd commands
 
 </details>
 
+### 2.5 Install Multi-Model MCP Backends (optional but highly recommended)
+
+`install.sh` only installs the command definitions; gudaspec's "multi-model collaboration" relies on two external MCP backends. Without them, `/gudaspec:plan` and `/gudaspec:implementation` cannot do multi-model prototyping/review (`/gudaspec:init` will warn).
+
+Prerequisites: [uv](https://docs.astral.sh/uv/) and the corresponding CLIs (Codex CLI, Antigravity `agy` CLI) installed.
+
+```bash
+# Codex MCP (backend/logic) — fork source
+claude mcp add codex -s user --transport stdio -- uvx --from git+https://github.com/TuWeiZhi/codexmcp.git codexmcp
+
+# Agy MCP (frontend/UI) — fork source, replaces the deprecated Gemini MCP
+claude mcp add agy -s user --transport stdio -- uvx --from git+https://github.com/TuWeiZhi/agy-mcp.git agymcp
+
+# Verify (expect codex / agy both ✓ Connected)
+claude mcp list
+```
+
+> - OpenSpec CLI need not be installed manually — `/gudaspec:init` installs it automatically.
+> - To use the PyPI package instead of the agy fork: `uv tool install agy-mcp`, then `claude mcp add agy -s user --transport stdio -- agymcp` (upstream [Boulea7/agy-mcp](https://github.com/Boulea7/agy-mcp)).
+> - Upgrading from the legacy Gemini MCP? See "4. Migration Guide" below.
+
 ### 3. Verify Installation
 
 After launching Claude Code, type `/gudaspec` to view available commands.
@@ -197,7 +218,7 @@ This phase's goal is to execute specific code implementation until user requirem
 
 ---
 
-## 4. Migration Guide: Gemini MCP → Agy MCP
+## 4. Migration Guide: Gemini MCP → Agy MCP (legacy users)
 
 > ⚠️ Google's **Gemini CLI is deprecated (EOL)**; its successor is the **Antigravity CLI (`agy`)**. This project has switched the "frontend/UI multi-model collaboration" backend from the Gemini CLI wrapper (`geminimcp`, tool `mcp__gemini__gemini`) to the **Antigravity CLI wrapper agy-mcp** (forked from [Boulea7/agy-mcp](https://github.com/Boulea7/agy-mcp); installed from [TuWeiZhi/agy-mcp](https://github.com/TuWeiZhi/agy-mcp); registered name `agy`, primary tool `mcp__agy__agy`). If you are still on the legacy Gemini MCP, migrate as follows.
 
@@ -213,22 +234,7 @@ claude mcp remove gemini
 
 ### 2. Install Agy MCP
 
-Prerequisites: the **Antigravity CLI (`agy`)** and **uv** are installed on your machine. Then install and register from the fork repo (same `uvx --from` pattern as the Codex MCP):
-
-```bash
-# If uv is not yet installed
-curl -LsSf https://astral.sh/uv/install.sh | sh          # Windows(PowerShell): irm https://astral.sh/uv/install.ps1 | iex
-
-# Register with Claude Code from the fork repo (server name `agy`, tool mcp__agy__agy;
-# uvx auto-fetches/builds TuWeiZhi/agy-mcp, exposing agymcp / agy-doctor / agy-install-skill)
-claude mcp add agy -s user --transport stdio -- uvx --from git+https://github.com/TuWeiZhi/agy-mcp.git agymcp
-
-# Verify (does not consume real agy quota)
-claude mcp list      # expect: agy: ... uvx --from git+...TuWeiZhi/agy-mcp.git agymcp - ✓ Connected
-agy-doctor
-```
-
-> To use the official PyPI package instead, replace the `uvx --from git+https://github.com/TuWeiZhi/agy-mcp.git agymcp` above with `uv tool install agy-mcp` then `claude mcp add agy -s user --transport stdio -- agymcp` (upstream: [Boulea7/agy-mcp](https://github.com/Boulea7/agy-mcp)).
+After removing the Gemini MCP, install the **Agy MCP** following "2. Quick Start → 2.5" above — it is the frontend/UI multi-model backend that replaces Gemini (uv install, verification, and PyPI fallback are all covered in §2.5).
 
 ### 3. Allowlist & global prompt
 
@@ -260,12 +266,7 @@ OpenSpec is a standardized requirements-to-implementation workflow framework tha
 <details>
 <summary>Q2: Is Codex/Agy MCP required? How do I install it?</summary>
 
-No, it's not mandatory. However, to use the complete multi-model collaboration features, you need to install the corresponding MCP tools. Running `/gudaspec:init` will detect and prompt for installation. Recommended install commands:
-
-- **Codex MCP** (fork): `claude mcp add codex -s user --transport stdio -- uvx --from git+https://github.com/TuWeiZhi/codexmcp.git codexmcp`
-- **Agy MCP** (replaces the deprecated Gemini MCP, forked from Boulea7/agy-mcp): `claude mcp add agy -s user --transport stdio -- uvx --from git+https://github.com/TuWeiZhi/agy-mcp.git agymcp`
-
-See "4. Migration Guide" below for full Gemini → Agy migration and removal steps.
+No, it's not mandatory, but needed for multi-model collaboration. Full install commands are in "2. Quick Start → 2.5"; upgrading from the legacy Gemini MCP is covered in "4. Migration Guide". Running `/gudaspec:init` will detect and prompt for installation.
 
 </details>
 
