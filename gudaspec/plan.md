@@ -3,7 +3,7 @@ name: GudaSpec: Plan
 description: Refine proposals into zero-decision executable task flows via multi-model analysis.
 category: GudaSpec
 tags: [gudaspec, plan, multi-model, pbt]
-allowed-tools: Bash(openspec:*), mcp__codex__codex, mcp__gemini__gemini
+allowed-tools: Bash(openspec:*), mcp__codex__codex, mcp__agy__agy
 argument-hint: [proposal_id]
 ---
 <!-- GUDASPEC:START -->
@@ -12,7 +12,7 @@ argument-hint: [proposal_id]
 - Strictly adhere to **OpenSpec** rules when writing **standardized spec-structured projects**.
 - The goal of this phase is to eliminate ALL decision points from the task flow—implementation should be pure mechanical execution.
 - Do not proceed to implementation until every ambiguity is resolved and every constraint is explicitly documented.
-- Multi-model collaboration is mandatory: use both `mcp__codex__codex` and `mcp__gemini__gemini` to surface blind spots and conflicting assumptions.
+- Multi-model collaboration is mandatory: use both `mcp__codex__codex` and `mcp__agy__agy` to surface blind spots and conflicting assumptions.
 - Every requirement must have Property-Based Testing (PBT) properties defined—focus on invariants, not just example-based tests.
 - If constraints cannot be fully specified, escalate back to the user rather than making assumptions.
 
@@ -23,7 +23,7 @@ argument-hint: [proposal_id]
 
 3. During the review progress, invoke both MCP tools to detect remaining ambiguities:
    - Use `mcp__codex__codex` tool, e.g. "Review proposal <proposal_id> for decision points that remain unspecified. List each as: [AMBIGUITY] <description> → [REQUIRED CONSTRAINT] <what must be decided>."
-   - Use `mcp__gemini__gemini` tool, e.g. "Identify implicit assumptions in proposal <proposal_id>. For each assumption, specify: [ASSUMPTION] <description> → [EXPLICIT CONSTRAINT NEEDED] <concrete specification>."
+   - Use `mcp__agy__agy` tool, e.g. "Identify implicit assumptions in proposal <proposal_id>. For each assumption, specify: [ASSUMPTION] <description> → [EXPLICIT CONSTRAINT NEEDED] <concrete specification>."
    - **Anti-Pattern Detection** (flag and reject):
      - Information collection without decision boundaries (e.g., "JWT vs OAuth2 vs session—all viable")
      - Technical comparisons without selection criteria
