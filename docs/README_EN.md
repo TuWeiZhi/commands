@@ -4,7 +4,7 @@
 
 **Based on RPI and Effective Context Theory, Let Claude Code Focus on One Thing at a Time**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-green.svg)](https://claude.ai/code) [![Share](https://img.shields.io/badge/share-000000?logo=x&logoColor=white)](https://x.com/intent/tweet?text=GudaStudio%20Commands：Claude%20Code%20Multi-Model%20Collaborative%20Workflow%20https://github.com/GuDaStudio/commands%20%23AI%20%23Coding%20%23ClaudeCode)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-green.svg)](https://claude.ai/code) [![Share](https://img.shields.io/badge/share-000000?logo=x&logoColor=white)](https://x.com/intent/tweet?text=GudaStudio%20Commands：Claude%20Code%20Multi-Model%20Collaborative%20Workflow%20https://github.com/TuWeiZhi/commands%20%23AI%20%23Coding%20%23ClaudeCode)
 
 ⭐ Star us on GitHub ~ Your support means a lot to us! 🙏😊
 
@@ -13,6 +13,8 @@ English | [简体中文](../README.md)
 </div>
 
 ---
+
+> 📌 **This project is forked from the upstream [GuDaStudio/commands](https://github.com/GuDaStudio/commands) and developed on top of it (secondary development).** Main changes: the deprecated Gemini CLI wrapper (`geminimcp`) is replaced by the **Antigravity (`agy`) MCP**, and the install sources for the Codex / Gemini / Agy MCPs are switched to the maintainer's forks (`TuWeiZhi/codexmcp`, `TuWeiZhi/geminimcp` [archived], `TuWeiZhi/agy-mcp`). The original workflow (RPI / OpenSpec / multi-model collaboration) is preserved unchanged. Many thanks to the upstream author.
 
 ## 1. Introduction
 
@@ -40,7 +42,7 @@ English | [简体中文](../README.md)
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/GuDaStudio/commands
+git clone https://github.com/TuWeiZhi/commands
 cd commands
 ```
 

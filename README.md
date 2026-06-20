@@ -4,7 +4,7 @@
 
 **基于RPI和有效上下文理论，让Claude Code一次只专注于一件事**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-green.svg)](https://claude.ai/code) [![Share](https://img.shields.io/badge/share-000000?logo=x&logoColor=white)](https://x.com/intent/tweet?text=GudaStudio%20Commands：Claude%20Code%20多模型协作工作流%20https://github.com/GuDaStudio/commands%20%23AI%20%23Coding%20%23ClaudeCode)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-green.svg)](https://claude.ai/code) [![Share](https://img.shields.io/badge/share-000000?logo=x&logoColor=white)](https://x.com/intent/tweet?text=GudaStudio%20Commands：Claude%20Code%20多模型协作工作流%20https://github.com/TuWeiZhi/commands%20%23AI%20%23Coding%20%23ClaudeCode)
 
 ⭐ 在 GitHub 上给我们点星~您的支持对我们意义重大！🙏😊
 
@@ -13,6 +13,8 @@
 </div>
 
 ---
+
+> 📌 **本项目 fork 自上游 [GuDaStudio/commands](https://github.com/GuDaStudio/commands)，并在此基础上进行二次开发。** 主要改动：将已废弃的 Gemini CLI 包装器（`geminimcp`）替换为 **Antigravity（`agy`）MCP**，并将 Codex / Gemini / Agy 三个 MCP 的安装源统一切换为当前维护者的 fork（`TuWeiZhi/codexmcp`、`TuWeiZhi/geminimcp`[已归档]、`TuWeiZhi/agy-mcp`）。原始工作流（RPI / OpenSpec / 多模型协作）逻辑保持不变。特此致谢上游作者。
 
 ## 一、项目简介
 
@@ -40,7 +42,7 @@
 ### 1. 获取仓库
 
 ```bash
-git clone https://github.com/GuDaStudio/commands
+git clone https://github.com/TuWeiZhi/commands
 cd commands
 ```
 
@@ -288,7 +290,7 @@ Copyright (c) 2025 [guda.studio](mailto:gudaclaude@gmail.com)
 
 ## 用 🌟 为本项目助力~
 
-[![Star History Chart](https://api.star-history.com/svg?repos=GuDaStudio/commands&type=date&legend=top-left)](https://www.star-history.com/#GuDaStudio/commands&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=TuWeiZhi/commands&type=date&legend=top-left)](https://www.star-history.com/#TuWeiZhi/commands&type=date&legend=top-left)
 
 </div>
 
