@@ -109,6 +109,12 @@ claude mcp add agy -s user --transport stdio -- uvx --from git+https://github.co
 claude mcp list
 ```
 
+> **⚠️ Windows users**: `claude mcp add ... -- uvx --from ...` fails in **PowerShell** with `error: unknown option '--from'` — a known PowerShell `--`-argument-parsing bug ([claude-code#3825](https://github.com/anthropics/claude-code/issues/3825)), not a bad command. **Simplest fix: run the exact same command in CMD (cmd.exe)** (CMD parses `--` correctly and keeps the `-s user` scope). If you must stay in PowerShell, use `add-json` (single-quoted JSON, inner double-quotes preserved):
+> ```powershell
+> claude mcp add-json codex -s user '{"type":"stdio","command":"uvx","args":["--from","git+https://github.com/TuWeiZhi/codexmcp.git","codexmcp"]}'
+> claude mcp add-json agy   -s user '{"type":"stdio","command":"uvx","args":["--from","git+https://github.com/TuWeiZhi/agy-mcp.git","agymcp"]}'
+> ```
+
 > - OpenSpec CLI need not be installed manually — `/gudaspec:init` installs it automatically.
 > - To use the PyPI package instead of the agy fork: `uv tool install agy-mcp`, then `claude mcp add agy -s user --transport stdio -- agymcp` (upstream [Boulea7/agy-mcp](https://github.com/Boulea7/agy-mcp)).
 > - Upgrading from the legacy Gemini MCP? See "4. Migration Guide" below.
